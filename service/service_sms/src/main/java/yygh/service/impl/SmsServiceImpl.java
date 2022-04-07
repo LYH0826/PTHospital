@@ -49,6 +49,7 @@ public class SmsServiceImpl implements SmsService {
 
         try {
             HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
+            System.out.println("电话号码为" + phone + "的用户短信验证码已发送，验证码为" + code);
             //获取response的body
             //System.out.println(EntityUtils.toString(response.getEntity()));
             return true;
@@ -97,6 +98,7 @@ public class SmsServiceImpl implements SmsService {
         bodys.put("template_id", "TPL_0000");
         try {
             HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
+            System.out.println("电话号码为" + phone + "的" + name + "短信内容已经发送成功！");
             //获取response的body
             //System.out.println(EntityUtils.toString(response.getEntity()));
             return true;

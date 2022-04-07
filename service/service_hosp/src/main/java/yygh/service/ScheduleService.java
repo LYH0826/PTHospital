@@ -41,4 +41,7 @@ public interface ScheduleService {
 
     //更新排班
     void update(Schedule schedule);
+
+    //根据hoscode,hosScheduleId，查询数据库对应数据
+    Schedule getScheduleByHoscodeAndHosScheduleId(String hoscode, String scheduleId);
 }

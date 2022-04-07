@@ -37,13 +37,21 @@ public class HospitalReceiver {
             throws IOException {
         if(null != orderMqVo.getAvailableNumber()) {
             //下单成功更新预约数
+            System.out.println("orderMqVoScheduleId = " + orderMqVo.getScheduleId());
             Schedule schedule = scheduleService.getById(orderMqVo.getScheduleId());
+            System.out.println("schedule = " + schedule);
             schedule.setReservedNumber(orderMqVo.getReservedNumber());
             schedule.setAvailableNumber(orderMqVo.getAvailableNumber());
             scheduleService.update(schedule);
         } else {
             //取消预约更新预约数
-            Schedule schedule = scheduleService.getById(orderMqVo.getScheduleId());
+            String hoscode = orderMqVo.getHoscode();
+            String scheduleId = orderMqVo.getScheduleId();
+            System.out.println("orderMqVoScheduleId = " + scheduleId);
+            System.out.println("hoscode = " + hoscode);
+            //Schedule schedule = scheduleService.getById(scheduleId);
+            Schedule schedule = scheduleService.getScheduleByHoscodeAndHosScheduleId(hoscode,scheduleId);
+            System.out.println("scheduleCancel = " + schedule);
             int availableNumber = schedule.getAvailableNumber() + 1;
             schedule.setAvailableNumber(availableNumber);
             scheduleService.update(schedule);

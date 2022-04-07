@@ -16,7 +16,7 @@ import yygh.vo.order.OrderQueryVo;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Api(tags = "订单接口：OrderApiController")
+@Api(tags = "订单API接口：OrderApiController")
 @RestController
 @RequestMapping("/api/order/orderInfo")
 public class OrderApiController {
@@ -59,5 +59,13 @@ public class OrderApiController {
     public Result getOrders(@PathVariable String orderId) {
         OrderInfo orderInfo = orderService.getOrder(orderId);
         return Result.ok(orderInfo);
+    }
+
+    @ApiOperation(value = "取消预约")
+    @GetMapping("auth/cancelOrder/{orderId}")
+    public Result cancelOrder(
+            @ApiParam(name = "orderId", value = "订单id", required = true)
+            @PathVariable("orderId") Long orderId) {
+        return Result.ok(orderService.cancelOrder(orderId));
     }
 }

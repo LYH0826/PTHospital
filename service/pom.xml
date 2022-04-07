@@ -18,6 +18,8 @@
         <module>service_sms</module>
         <module>service_oss</module>
         <module>service_order</module>
+        <module>service-task</module>
+        <module>service-statistics</module>
     </modules>
 
     <properties>

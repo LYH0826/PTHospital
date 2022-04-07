@@ -12,6 +12,7 @@ public class MqConst {
     //队列
     public static final String QUEUE_MSM_ITEM="queue.msm.item";
 
+    //就医提醒参数
     public static final String QUEUE_TASK_8 = "queue.task.8";
     public static final String EXCHANGE_DIRECT_TASK = "exchange.direct.task";
     public static final String ROUTING_TASK_8 = "task.8";

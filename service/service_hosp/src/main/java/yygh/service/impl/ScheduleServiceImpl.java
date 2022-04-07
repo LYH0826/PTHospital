@@ -306,6 +306,8 @@ public class ScheduleServiceImpl
         return schedule;
     }
 
+
+
     //根据排班id获取预约下单数据
     @Override
     public ScheduleOrderVo getScheduleOrderVo(String scheduleId) {
@@ -369,6 +371,14 @@ public class ScheduleServiceImpl
         schedule.setUpdateTime(new Date());
         //在mongodb中，主键一致便是更新
         scheduleRepository.save(schedule);
+    }
+
+    //根据hoscode,hosScheduleId，查询数据库对应数据
+    @Override
+    public Schedule getScheduleByHoscodeAndHosScheduleId(String hoscode, String scheduleId) {
+        Schedule schedule = scheduleRepository.getScheduleByHoscodeAndHosScheduleId(hoscode, scheduleId);
+        this.packageSchedule(schedule);
+        return schedule;
     }
 
 
